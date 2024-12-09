@@ -1,0 +1,19 @@
+{
+    "name": "josea/laravel-debito-em-conta",
+    "description": "Pacote para geração de arquivos de débito em conta",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Josea\\LaravelDebitoEmConta\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "José Alcides",
+            "email": "jose.alcides@soluct.com.br"
+        }
+    ],
+    "require": {
+      "ext-mbstring": "*"
+    }
+}
