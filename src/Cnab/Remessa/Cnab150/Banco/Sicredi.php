@@ -1,8 +1,8 @@
 <?php
 namespace Josea\LaravelDebitoEmConta\Cnab\Remessa\Cnab150\Banco;
 use Josea\LaravelDebitoEmConta\Cnab\Remessa\Cnab150\AbstractRemessa;
+use Josea\LaravelDebitoEmConta\Contracts\Cnab\Remessa;
 use Josea\LaravelDebitoEmConta\Contracts\Debito\Debito;
-use Remessa;
 
 class Sicredi extends AbstractRemessa implements Remessa
 {
