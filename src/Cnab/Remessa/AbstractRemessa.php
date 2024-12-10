@@ -441,6 +441,23 @@ abstract class AbstractRemessa
         $this->agencia = $agencia;
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function getConta()
+    {
+        return $this->conta;
+    }
+
+    /**
+     * @param mixed $conta
+     */
+    public function setConta($conta)
+    {
+        $this->conta = $conta;
+    }
+
     /**
      * Método que valida se o banco tem todos os campos obrigatórios preenchidos
      *

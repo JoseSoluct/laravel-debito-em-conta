@@ -14,6 +14,9 @@ class Sicredi extends AbstractRemessa implements Remessa
     const VERSAO_LAYOUT = '05';
     const IDENTIFICACAO_SERVICO = 'DEBITO AUTOMATICO';
 
+    /*
+     * @params
+     */
     public function __construct(array $params)
     {
         parent::__construct($params);
@@ -56,9 +59,9 @@ class Sicredi extends AbstractRemessa implements Remessa
     protected function segmentoE(Debito $debito){
         $this->iniciaDetalhe();
         $this->add(1,1,'E');
-        $this->add(2,26, $this->identificacao);
+        $this->add(2,26, $this->getIdentificacao());
         $this->add(27,30, $this->getAgencia());
-        $this->add(31,44, $this->getIdentificacao());
+        $this->add(31,44, $this->getConta());
         $this->add(45,52, $this->getDatavencimento());
         $this->add(53,67, $this->getValordebito());
         $this->add(70,118, '');
