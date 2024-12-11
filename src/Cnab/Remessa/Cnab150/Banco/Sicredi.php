@@ -3,7 +3,7 @@ namespace Josea\LaravelDebitoEmConta\Cnab\Remessa\Cnab150\Banco;
 use Josea\LaravelDebitoEmConta\Cnab\Remessa\Cnab150\AbstractRemessa;
 use Josea\LaravelDebitoEmConta\Contracts\Cnab\Remessa;
 use Josea\LaravelDebitoEmConta\Contracts\Debito\Debito;
-
+use Josea\LaravelDebitoEmConta\Exception\ValidationException;
 class Sicredi extends AbstractRemessa implements Remessa
 {
     const CODIGO_REGISTRO = 'A';

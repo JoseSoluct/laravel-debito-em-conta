@@ -2,6 +2,9 @@
 
 namespace Josea\LaravelDebitoEmConta\Cnab\Remessa\Cnab150;
 use \Josea\LaravelDebitoEmConta\Cnab\Remessa\AbstractRemessa as BaseRemessa;
+use Illuminate\Support\Str;
+use Josea\LaravelDebitoEmConta\Exception\ValidationException;
+
 abstract class AbstractRemessa extends BaseRemessa
 {
     protected $tamanho_linha = 150;

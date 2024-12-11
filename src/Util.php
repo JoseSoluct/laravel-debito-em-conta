@@ -1,4 +1,7 @@
 <?php
+namespace Josea\LaravelDebitoEmConta;
+use Illuminate\Support\Str;
+use Josea\LaravelDebitoEmConta\Exception\ValidationException;
 
 /**
  * Class Util
