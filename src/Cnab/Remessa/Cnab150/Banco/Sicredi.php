@@ -49,9 +49,15 @@ class Sicredi extends AbstractRemessa implements Remessa
         return $this;
     }
 
-    protected function addDebito(Debito $debito)
+    /**
+     * @param Debito $debito
+     *
+     * @return Sicredi
+     * @throws ValidationException
+     */
+    public function addDebito(Debito $debito)
     {
-        $this->debito[] = $debito;
+        $this->debitos[] = $debito;
         $this->segmentoE($debito);
         return $this;
     }
