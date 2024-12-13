@@ -212,6 +212,41 @@ final class Util
     }
 
     /**
+     * Função para add valor a linha nas posições informadas.
+     *
+     * @param $line
+     * @param int $i
+     * @param int $f
+     * @param $value
+     * @param int $tamanhoLinha
+     * @return array
+     * @throws ValidationException
+     */
+    public static function adiciona(&$line, $i, $f, $value, $tamanhoLinha = 150)
+    {
+        $i--;
+
+        if ($f > $tamanhoLinha) {
+            throw new ValidationException('$ini ou $fim ultrapassam o limite máximo de ' . $tamanhoLinha);
+        }
+
+        if ($f < $i) {
+            throw new ValidationException('$ini é maior que o $fim');
+        }
+
+        $t = $f - $i;
+
+        if (mb_strlen($value) > $t) {
+            throw new ValidationException(sprintf('String $valor maior que o tamanho definido em $ini e $fim: $valor=%s e tamanho é de: %s', mb_strlen($value), $t));
+        }
+
+        $value = sprintf("%{$t}s", $value);
+        $value = preg_split('//u', $value, -1, PREG_SPLIT_NO_EMPTY) + array_fill(0, $t, '');
+
+        return array_splice($line, $i, $t, $value);
+    }
+
+    /**
      * Retorna a String em minusculo
      *
      * @param string $string
