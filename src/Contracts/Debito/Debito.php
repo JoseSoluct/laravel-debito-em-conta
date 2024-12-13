@@ -4,5 +4,23 @@ namespace Josea\LaravelDebitoEmConta\Contracts\Debito;
 
 interface Debito
 {
+    public function getIdentificacaocliente();
 
+    public function getAgencia();
+
+    public function getIdentificacaobanco();
+
+    public function getDatavencimento();
+
+    public function getValor();
+
+    public function getIdentificacao();
+
+    public function getRegistro();
+
+    public function getMoeda();
+
+    public function getTipoidentificacao();
+
+    public function getMovimento();
 }

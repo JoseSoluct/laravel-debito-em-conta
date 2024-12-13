@@ -24,135 +24,194 @@ abstract class AbstractDebito implements Debito
      * @var array
      */
     private $camposObrigatorios = [
-        'identificacao',
+        'identificacaocliente',
         'agencia',
-        'conta',
-        'identificacaobancaria',
+        'identificacaobanco',
         'datavencimento',
         'valor',
-        'cpfcnpj',
+        'identificacao',
+    ];
+
+    protected $protectedFields = [
+        'registro',
+        'moeda',
+        'tipoidentificacao',
         'movimento'
     ];
 
-    public function getMoeda(): int|string
+    protected $identificacaocliente;
+    protected $agencia;
+    protected $identificacaobanco;
+    protected $datavencimento;
+    protected $valor;
+    protected $identificacao;
+    protected $registro;
+    protected $moeda;
+    protected $tipoidentificacao;
+    protected $movimento;
+
+    /**
+     * @return mixed
+     */
+    public function getIdentificacaocliente()
     {
-        return $this->moeda;
+        return $this->identificacaocliente;
     }
 
-    public function setMoeda(int|string $moeda): void
+    /**
+     * @param mixed $identificacaocliente
+     */
+    public function setIdentificacaocliente($identificacaocliente): void
     {
-        $this->moeda = $moeda;
+        $this->identificacaocliente = $identificacaocliente;
     }
 
-    public function getValor(): float
-    {
-        return $this->valor;
-    }
-
-    public function setValor(float $valor): void
-    {
-        $this->valor = $valor;
-    }
-
-    public function getDataVencimento(): Carbon
-    {
-        return $this->dataVencimento;
-    }
-
-    public function setDataVencimento(Carbon $dataVencimento): void
-    {
-        $this->dataVencimento = $dataVencimento;
-    }
-
-    public function getAgencia(): string
+    /**
+     * @return mixed
+     */
+    public function getAgencia()
     {
         return $this->agencia;
     }
 
-    public function setAgencia(string $agencia): void
+    /**
+     * @param mixed $agencia
+     */
+    public function setAgencia($agencia): void
     {
         $this->agencia = $agencia;
     }
 
-    public function getAgenciaDv(): string
+    /**
+     * @return mixed
+     */
+    public function getIdentificacaobanco()
     {
-        return $this->agenciaDv;
-    }
-
-    public function setAgenciaDv(string $agenciaDv): void
-    {
-        $this->agenciaDv = $agenciaDv;
-    }
-
-    public function getConta(): string
-    {
-        return $this->conta;
-    }
-
-    public function setConta(string $conta): void
-    {
-        $this->conta = $conta;
-    }
-
-    public function getContaDv(): string
-    {
-        return $this->contaDv;
-    }
-
-    public function setContaDv(string $contaDv): void
-    {
-        $this->contaDv = $contaDv;
+        return $this->identificacaobanco;
     }
 
     /**
-     * Moeda
-     *
-     * @var int
+     * @param mixed $identificacaobanco
      */
-    protected $moeda = '03';
+    public function setIdentificacaobanco($identificacaobanco): void
+    {
+        $this->identificacaobanco = $identificacaobanco;
+    }
 
     /**
-     * Valor total do débito
-     *
-     * @var float
+     * @return mixed
      */
-    public $valor;
+    public function getDatavencimento()
+    {
+        return $this->datavencimento;
+    }
 
     /**
-     * Data do débito
-     *
-     * @var Carbon
+     * @param mixed $datavencimento
      */
-    public $dataVencimento;
+    public function setDatavencimento($datavencimento): void
+    {
+        $this->datavencimento = $datavencimento;
+    }
 
     /**
-     * Agência
-     *
-     * @var string
+     * @return mixed
      */
-    protected $agencia;
+    public function getValor()
+    {
+        return $this->valor;
+    }
 
     /**
-     * Dígito da agência
-     *
-     * @var string
+     * @param mixed $valor
      */
-    protected $agenciaDv;
+    public function setValor($valor): void
+    {
+        $this->valor = $valor;
+    }
 
     /**
-     * Conta
-     *
-     * @var string
+     * @return mixed
      */
-    protected $conta;
+    public function getIdentificacao()
+    {
+        return $this->identificacao;
+    }
 
     /**
-     * Dígito da conta
-     *
-     * @var string
+     * @param mixed $identificacao
      */
-    protected $contaDv;
+    public function setIdentificacao($identificacao): void
+    {
+        $this->identificacao = $identificacao;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getRegistro()
+    {
+        return $this->registro;
+    }
+
+    /**
+     * @param mixed $registro
+     */
+    public function setRegistro($registro): void
+    {
+        $this->registro = $registro;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMoeda()
+    {
+        return $this->moeda;
+    }
+
+    /**
+     * @param mixed $moeda
+     */
+    public function setMoeda($moeda): void
+    {
+        $this->moeda = $moeda;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTipoidentificacao()
+    {
+        return $this->tipoidentificacao;
+    }
+
+    /**
+     * @param mixed $tipoidentificacao
+     */
+    public function setTipoidentificacao($tipoidentificacao): void
+    {
+        $this->tipoidentificacao = $tipoidentificacao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMovimento()
+    {
+        return $this->movimento;
+    }
+
+    /**
+     * @param mixed $movimento
+     */
+    public function setMovimento($movimento): void
+    {
+        $this->movimento = $movimento;
+    }
+    
+    
+    
     /**
      * AbstractDebito constructor.
      *
@@ -161,22 +220,6 @@ abstract class AbstractDebito implements Debito
     public function __construct($params = [])
     {
         Util::fillClass($this, $params);
-        // Marca a data de emissão para hoje, caso não especificada
-        if (! $this->getDataDocumento()) {
-            $this->setDataDocumento(new Carbon());
-        }
-        // Marca a data de processamento para hoje, caso não especificada
-        if (! $this->getDataProcessamento()) {
-            $this->setDataProcessamento(new Carbon());
-        }
-        // Marca a data de vencimento para daqui a 5 dias, caso não especificada
-        if (! $this->getDataVencimento()) {
-            $this->setDataVencimento(new Carbon(date('Y-m-d', strtotime('+5 days'))));
-        }
-        // Marca a data de desconto
-        if (! $this->getDataDesconto()) {
-            $this->setDataDesconto($this->getDataVencimento());
-        }
     }
 
     /**

@@ -1,9 +1,12 @@
 <?php
 namespace Josea\LaravelDebitoEmConta\Cnab\Remessa\Cnab150\Banco;
+use Carbon\Carbon;
 use Josea\LaravelDebitoEmConta\Cnab\Remessa\Cnab150\AbstractRemessa;
 use Josea\LaravelDebitoEmConta\Contracts\Cnab\Remessa;
 use Josea\LaravelDebitoEmConta\Contracts\Debito\Debito;
 use Josea\LaravelDebitoEmConta\Exception\ValidationException;
+use Josea\LaravelDebitoEmConta\Util;
+
 class Sicredi extends AbstractRemessa implements Remessa
 {
     const CODIGO_REGISTRO = 'A';
@@ -14,9 +17,6 @@ class Sicredi extends AbstractRemessa implements Remessa
     const VERSAO_LAYOUT = '05';
     const IDENTIFICACAO_SERVICO = 'DEBITO AUTOMATICO';
 
-    /*
-     * @params
-     */
     public function __construct(array $params)
     {
         parent::__construct($params);
@@ -38,11 +38,11 @@ class Sicredi extends AbstractRemessa implements Remessa
         $this->add(1,1,'A');
         $this->add(2,2,'1');
         $this->add(4,22,$this->convenio);
-        $this->add(23,42, $this->nome_empresa);
+        $this->add(23,42, $this->nomeempresa);
         $this->add(43,45, self::CODIGO_BANCO);
         $this->add(46,65, self::NOME_BANCO);
         $this->add(66,73, $this->datageracao);
-        $this->add(74,79, \Util::formatCnab('9', $this->sequencial, 6));
+        $this->add(74,79, Util::formatCnab('9', $this->sequencial, 6));
         $this->add(80,81, '05');
         $this->add(82,98, 'DEBITO AUTOMATICO');
         $this->add(99,150, '');
@@ -89,8 +89,8 @@ class Sicredi extends AbstractRemessa implements Remessa
         $this->iniciaTrailer();
 
         $this->add(1, 1, 'Z');
-        $this->add(2, 7, \Util::formatCnab('9', $this->getCount(), 6));
-        $this->add(8,24, \Util::formatCnab('9', $this->getTotal(), 17));
+        $this->add(2, 7, Util::formatCnab('9', $this->getCount(), 6));
+        $this->add(8,24, Util::formatCnab('9', $this->getTotal(), 17));
         $this->add(25, 150, '');
         return $this;
     }

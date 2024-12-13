@@ -19,17 +19,168 @@ abstract class AbstractRemessa
      * @var array
      */
     private $camposObrigatorios = [
-        'registro',
-        'remessa',
         'convenio',
-        'nome_empresa',
-        'cod_banco',
-        'nome_banco',
-        'datageracao',
-        'sequencial',
-        'versao',
-        'identificacao',
+        'nomeempresa',
+        'sequencial'
     ];
+
+
+    protected $registro;
+    protected $remessa;
+    protected $convenio;
+    protected $nomeempresa;
+    protected $codbanco;
+    protected $nomebanco;
+    protected $datageracao;
+    protected $sequencial;
+    protected $versao;
+    protected $identificacao;
+
+    /**
+     * @return mixed
+     */
+    public function getRegistro()
+    {
+        return $this->registro;
+    }
+
+    /**
+     * @param mixed $registro
+     */
+    public function setRegistro($registro): void
+    {
+        $this->registro = $registro;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRemessa()
+    {
+        return $this->remessa;
+    }
+
+    /**
+     * @param mixed $remessa
+     */
+    public function setRemessa($remessa): void
+    {
+        $this->remessa = $remessa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConvenio()
+    {
+        return $this->convenio;
+    }
+
+    /**
+     * @param mixed $convenio
+     */
+    public function setConvenio($convenio): void
+    {
+        $this->convenio = $convenio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomeempresa()
+    {
+        return $this->nomeempresa;
+    }
+
+    /**
+     * @param mixed $nomeempresa
+     */
+    public function setNomeempresa($nomeempresa): void
+    {
+        $this->nomeempresa = $nomeempresa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodbanco()
+    {
+        return $this->codbanco;
+    }
+
+    /**
+     * @param mixed $codbanco
+     */
+    public function setCodbanco($codbanco): void
+    {
+        $this->codbanco = $codbanco;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomebanco()
+    {
+        return $this->nomebanco;
+    }
+
+    /**
+     * @param mixed $nomebanco
+     */
+    public function setNomebanco($nomebanco): void
+    {
+        $this->nomebanco = $nomebanco;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSequencial()
+    {
+        return $this->sequencial;
+    }
+
+    /**
+     * @param mixed $sequencial
+     */
+    public function setSequencial($sequencial): void
+    {
+        $this->sequencial = $sequencial;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVersao()
+    {
+        return $this->versao;
+    }
+
+    /**
+     * @param mixed $versao
+     */
+    public function setVersao($versao): void
+    {
+        $this->versao = $versao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdentificacao()
+    {
+        return $this->identificacao;
+    }
+
+    /**
+     * @param mixed $identificacao
+     */
+    public function setIdentificacao($identificacao): void
+    {
+        $this->identificacao = $identificacao;
+    }
+
+
 
     /**
      * @var array
@@ -89,61 +240,9 @@ abstract class AbstractRemessa
      */
     protected $fimArquivo = null;
 
-    /**
-     * Codigo do registro
-     *
-     * @var string 1 posição
-     */
-    protected $registro = null;
 
-    /**
-     * Código da Remessa
-     *
-     * @var int 9 posições
-     */
-    protected $remessa = null;
 
-    /**
-     * Código do Convênio
-     *
-     * @var string 20 posições
-     */
-    protected $convenio = null;
 
-    /**
-     * Nome da empresa
-     *
-     * @var string 20 posições
-     */
-    protected $nome_empresa = null;
-
-    /**
-     * A data que será informada no header da remessa
-     *
-     * @var Carbon;
-     */
-    protected $datageracao = null;
-
-    /**
-     * ID do arquivo remessa, sequencial.
-     *
-     * @var
-     */
-    protected $sequencial;
-
-    /**
-     * Versão do Layout
-     *
-     * @var
-     */
-    protected $versao;
-
-    /**
-     * Identificação do Serviço
-     *
-     * @var
-     */
-    protected $identificacao;
 
     public function __construct($params = [])
     {
@@ -212,7 +311,7 @@ abstract class AbstractRemessa
      */
     protected function add($i, $f, $value)
     {
-        return \Util::adiciona($this->atual, $i, $f, $value, $this->tamanho_atual);
+        return Util::adiciona($this->atual, $i, $f, $value, $this->tamanho_atual);
     }
 
     /**
@@ -229,118 +328,6 @@ abstract class AbstractRemessa
         }
 
         return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getRegistro()
-    {
-        return $this->registro;
-    }
-
-    /**
-     * @param string|null $registro
-     */
-    public function setRegistro($registro)
-    {
-        $this->registro = $registro;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getRemessa()
-    {
-        return $this->remessa;
-    }
-
-    /**
-     * @param int|null $remessa
-     */
-    public function setRemessa($remessa)
-    {
-        $this->remessa = $remessa;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getConvenio()
-    {
-        return $this->convenio;
-    }
-
-    /**
-     * @param string|null $convenio
-     */
-    public function setConvenio($convenio)
-    {
-        $this->convenio = $convenio;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getNomeEmpresa()
-    {
-        return $this->nome_empresa;
-    }
-
-    /**
-     * @param string|null $nome_empresa
-     */
-    public function setNomeEmpresa($nome_empresa)
-    {
-        $this->nome_empresa = $nome_empresa;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSequencial()
-    {
-        return $this->sequencial;
-    }
-
-    /**
-     * @param mixed $sequencial
-     */
-    public function setSequencial($sequencial)
-    {
-        $this->sequencial = $sequencial;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getVersao()
-    {
-        return $this->versao;
-    }
-
-    /**
-     * @param mixed $versao
-     */
-    public function setVersao($versao)
-    {
-        $this->versao = $versao;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdentificacao()
-    {
-        return $this->identificacao;
-    }
-
-    /**
-     * @param mixed $identificacao
-     */
-    public function setIdentificacao($identificacao)
-    {
-        $this->identificacao = $identificacao;
     }
 
     /**
