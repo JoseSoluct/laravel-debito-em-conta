@@ -94,9 +94,4 @@ class Sicredi extends AbstractRemessa implements Remessa
         $this->add(25, 150, '');
         return $this;
     }
-
-    private function getAgencia()
-    {
-        return $this->agencia;
-    }
 }
