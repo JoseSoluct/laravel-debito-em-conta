@@ -1,6 +1,7 @@
 <?php
 
 namespace Josea\LaravelDebitoEmConta\Cnab\Remessa\Cnab150;
+use ForceUTF8\Encoding;
 use \Josea\LaravelDebitoEmConta\Cnab\Remessa\AbstractRemessa as BaseRemessa;
 use Illuminate\Support\Str;
 use Josea\LaravelDebitoEmConta\Exception\ValidationException;
