@@ -28,7 +28,7 @@ abstract class AbstractDebito implements Debito
         'agencia',
         'identificacaobanco',
         'datavencimento',
-        'valor',
+        'valordebito',
         'identificacao',
     ];
 
@@ -43,7 +43,7 @@ abstract class AbstractDebito implements Debito
     protected $agencia;
     protected $identificacaobanco;
     protected $datavencimento;
-    protected $valor;
+    protected $valordebito;
     protected $identificacao;
     protected $registro;
     protected $moeda;
@@ -117,17 +117,17 @@ abstract class AbstractDebito implements Debito
     /**
      * @return mixed
      */
-    public function getValor()
+    public function getValordebito()
     {
-        return $this->valor;
+        return $this->valordebito;
     }
 
     /**
-     * @param mixed $valor
+     * @param mixed $valordebito
      */
-    public function setValor($valor): void
+    public function setValordebito($valordebito): void
     {
-        $this->valor = $valor;
+        $this->valordebito = $valordebito;
     }
 
     /**
@@ -209,9 +209,9 @@ abstract class AbstractDebito implements Debito
     {
         $this->movimento = $movimento;
     }
-    
-    
-    
+
+
+
     /**
      * AbstractDebito constructor.
      *

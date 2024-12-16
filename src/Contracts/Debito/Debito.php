@@ -12,7 +12,7 @@ interface Debito
 
     public function getDatavencimento();
 
-    public function getValor();
+    public function getValordebito();
 
     public function getIdentificacao();
 

@@ -455,6 +455,60 @@ abstract class AbstractRemessa
     }
 
     /**
+     * Valida se a linha esta correta.
+     *
+     * @param array $a
+     * @param int $extendido
+     *
+     * @return string
+     * @throws ValidationException
+     */
+    protected function valida(array $a, $extendido = 0)
+    {
+        if ($this->tamanho_linha === false) {
+            throw new ValidationException('Classe remessa deve informar o tamanho da linha');
+        }
+
+        $a = array_filter($a, 'mb_strlen');
+        if (count($a) != ($this->tamanho_linha + $extendido)) {
+            throw new ValidationException(sprintf('$a não possui %s posições, possui: %s', $this->tamanho_linha, count($a)));
+        }
+
+        return implode('', $a);
+    }
+
+    /**
+     * Retorna o header do arquivo.
+     *
+     * @return mixed
+     */
+    protected function getHeader()
+    {
+        return $this->aRegistros[self::HEADER];
+    }
+
+    /**
+     * Retorna os detalhes do arquivo
+     *
+     * @return Collection
+     */
+    protected function getDetalhes()
+    {
+        return collect($this->aRegistros[self::DETALHE]);
+    }
+
+    /**
+     * Retorna o trailer do arquivo.
+     *
+     * @return mixed
+     */
+    protected function getTrailer()
+    {
+        return $this->aRegistros[self::TRAILER];
+    }
+
+
+    /**
      * Função para gerar o cabeçalho do arquivo.
      *
      * @return mixed

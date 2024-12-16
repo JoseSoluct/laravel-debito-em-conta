@@ -19,7 +19,7 @@ abstract class AbstractDebito implements Debito
         'agencia',
         'codigocliente',
         'datavencimento',
-        'valor',
+        'valordebito',
         'codigomovimento'
     ];
 
@@ -136,7 +136,7 @@ abstract class AbstractDebito implements Debito
      */
     public function setValordebito($valordebito)
     {
-        $this->valordebito = (string) $valordebito;
+        $this->valordebito = $valordebito;
 
         return $this;
     }

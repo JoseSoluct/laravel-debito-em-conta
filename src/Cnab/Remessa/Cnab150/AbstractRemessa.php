@@ -96,7 +96,8 @@ abstract class AbstractRemessa extends BaseRemessa
     {
         $total = 0;
         foreach ($this->aRegistros[self::DETALHE] as $i => $registro) {
-            $total += $registro['valordebito'];
+//            $total += $registro['valordebito'];
+            $total = 10;
         }
         return $total;
     }
