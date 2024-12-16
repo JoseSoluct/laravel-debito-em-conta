@@ -34,7 +34,110 @@ abstract class AbstractRemessa
     protected $datageracao;
     protected $sequencial;
     protected $versao;
+
+    protected $agencia;
+    protected $conta;
+    protected $datavencimento;
+    protected $valordebito;
+    protected $tipoidentificacao;
     protected $identificacao;
+    protected $codigomovimento;
+
+    /**
+     * @return mixed
+     */
+    public function getConta()
+    {
+        return $this->conta;
+    }
+
+    /**
+     * @param mixed $conta
+     */
+    public function setConta($conta): void
+    {
+        $this->conta = $conta;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDatavencimento()
+    {
+        return $this->datavencimento;
+    }
+
+    /**
+     * @param mixed $datavencimento
+     */
+    public function setDatavencimento($datavencimento): void
+    {
+        $this->datavencimento = $datavencimento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValordebito()
+    {
+        return $this->valordebito;
+    }
+
+    /**
+     * @param mixed $valordebito
+     */
+    public function setValordebito($valordebito): void
+    {
+        $this->valordebito = $valordebito;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTipoidentificacao()
+    {
+        return $this->tipoidentificacao;
+    }
+
+    /**
+     * @param mixed $tipoidentificacao
+     */
+    public function setTipoidentificacao($tipoidentificacao): void
+    {
+        $this->tipoidentificacao = $tipoidentificacao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigomovimento()
+    {
+        return $this->codigomovimento;
+    }
+
+    /**
+     * @param mixed $codigomovimento
+     */
+    public function setCodigomovimento($codigomovimento): void
+    {
+        $this->codigomovimento = $codigomovimento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAgencia()
+    {
+        return $this->agencia;
+    }
+
+    /**
+     * @param mixed $agencia
+     */
+    public function setAgencia($agencia): void
+    {
+        $this->agencia = $agencia;
+    }
 
     /**
      * @return mixed

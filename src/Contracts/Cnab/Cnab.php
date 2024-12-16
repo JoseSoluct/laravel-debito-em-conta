@@ -1,6 +1,7 @@
 <?php
+
 namespace Josea\LaravelDebitoEmConta\Contracts\Cnab;
-interface Remessa extends Cnab
+
+interface Cnab
 {
-    public function gerar();
 }
