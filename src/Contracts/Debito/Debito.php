@@ -23,4 +23,5 @@ interface Debito
     public function getTipoidentificacao();
 
     public function getMovimento();
+    public function getConta();
 }

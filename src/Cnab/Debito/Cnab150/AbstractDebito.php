@@ -26,6 +26,7 @@ abstract class AbstractDebito implements Debito
     private $camposObrigatorios = [
         'identificacaocliente',
         'agencia',
+        'conta',
         'identificacaobanco',
         'datavencimento',
         'valordebito',
@@ -41,6 +42,7 @@ abstract class AbstractDebito implements Debito
 
     protected $identificacaocliente;
     protected $agencia;
+    protected $conta;
     protected $identificacaobanco;
     protected $datavencimento;
     protected $valordebito;
@@ -208,6 +210,22 @@ abstract class AbstractDebito implements Debito
     public function setMovimento($movimento): void
     {
         $this->movimento = $movimento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConta()
+    {
+        return $this->conta;
+    }
+
+    /**
+     * @param mixed $conta
+     */
+    public function setConta($conta): void
+    {
+        $this->conta = $conta;
     }
 
 

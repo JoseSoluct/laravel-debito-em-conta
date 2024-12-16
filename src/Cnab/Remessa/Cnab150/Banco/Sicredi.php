@@ -40,7 +40,7 @@ class Sicredi extends AbstractRemessa implements Remessa
         $this->add(3,22,$this->getConvenio());
         $this->add(23,42, Util::formatCnab('X', $this->getNomeempresa(), 20));
         $this->add(43,45, self::CODIGO_BANCO);
-        $this->add(46,65, self::NOME_BANCO);
+        $this->add(46,65, Util::formatCnab('X',self::NOME_BANCO, 20));
         $this->add(66,73, $this->datageracao);
         $this->add(74,79, Util::formatCnab('9', $this->sequencial, 6));
         $this->add(80,81, '05');
@@ -66,17 +66,17 @@ class Sicredi extends AbstractRemessa implements Remessa
         $this->iniciaDetalhe();
         $this->add(1,1,'E');
         $this->add(2,26, $this->getIdentificacao());
-        $this->add(27,30, $this->getAgencia());
-        $this->add(31,44, $this->getConta());
-        $this->add(45,52, $this->getDatavencimento());
-        $this->add(53,67, $this->getValordebito());
+        $this->add(27,30, $debito->getAgencia());
+        $this->add(31,44, $debito->getConta());
+        $this->add(45,52, $debito->getDatavencimento());
+        $this->add(53,67, $debito->getValordebito());
         $this->add(70,118, '');
         $this->add(119,128, 0);
         $this->add(129,129, 'X');
-        $this->add(130,130, $this->getTipoidentificacao());
-        $this->add(131,145, $this->getIdentificacao());
+        $this->add(130,130, $debito->getTipoidentificacao());
+        $this->add(131,145, $debito->getIdentificacao());
         $this->add(146,149, '');
-        $this->add(150,150, $this->getCodigomovimento());
+        $this->add(150,150, $debito->getCodigomovimento());
         return $this;
     }
 
