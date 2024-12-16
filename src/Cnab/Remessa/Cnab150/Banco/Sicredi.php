@@ -65,18 +65,20 @@ class Sicredi extends AbstractRemessa implements Remessa
     protected function segmentoE(Debito $debito){
         $this->iniciaDetalhe();
         $this->add(1,1,'E');
-        $this->add(2,26, $this->getIdentificacao());
-        $this->add(27,30, $debito->getAgencia());
-        $this->add(31,44, $debito->getConta());
+        $this->add(2,26, Util::formatCnab('X', $debito->getIdentificacaocliente(), 25));
+        $this->add(27,30, Util::formatCnab('X', $debito->getAgencia(), 4));
+        $this->add(31,44, Util::formatCnab('X', $debito->getIdentificacaobanco(), 14));
         $this->add(45,52, $debito->getDatavencimento());
-        $this->add(53,67, $debito->getValordebito());
+        $this->add(53,67, Util::formatCnab('9', $debito->getValordebito(), 15, 2));
+        $this->add(68,69, Util::formatCnab('X', '01', 2));
         $this->add(70,118, '');
         $this->add(119,128, 0);
-        $this->add(129,129, 'X');
+        $this->add(129,129, '');
         $this->add(130,130, $debito->getTipoidentificacao());
         $this->add(131,145, $debito->getIdentificacaobanco());
         $this->add(146,149, '');
         $this->add(150,150, $debito->getMovimento());
+
         return $this;
     }
 
@@ -87,7 +89,6 @@ class Sicredi extends AbstractRemessa implements Remessa
     protected function trailer()
     {
         $this->iniciaTrailer();
-
         $this->add(1, 1, 'Z');
         $this->add(2, 7, Util::formatCnab('9', $this->getCount(), 6));
         $this->add(8,24, Util::formatCnab('9', $this->getTotal(), 17));

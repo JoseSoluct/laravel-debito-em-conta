@@ -185,7 +185,14 @@ abstract class AbstractDebito implements Debito
      */
     public function getTipoidentificacao()
     {
-        return $this->tipoidentificacao;
+        if (strlen($this->getidentificacao()) == 11) {
+            return '2';
+        }
+        if (strlen($this->getidentificacao()) == 15) {
+            return '1';
+        }
+
+//        return $this->tipoidentificacao;
     }
 
     /**

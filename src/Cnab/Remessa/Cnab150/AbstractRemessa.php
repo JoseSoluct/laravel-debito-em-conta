@@ -96,9 +96,8 @@ abstract class AbstractRemessa extends BaseRemessa
     protected function getTotal()
     {
         $total = 0;
-        foreach ($this->aRegistros[self::DETALHE] as $i => $registro) {
-//            $total += $registro['valordebito'];
-            $total = 10;
+        foreach ($this->debitos as $i){
+            $total += $i->valordebito;
         }
         return $total;
     }
