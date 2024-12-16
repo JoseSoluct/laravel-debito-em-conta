@@ -35,8 +35,10 @@ abstract class AbstractRemessa
     protected $sequencial;
     protected $versao;
 
+    protected $identificacaocliente;
     protected $agencia;
     protected $conta;
+    protected $identificacaobancaria;
     protected $datavencimento;
     protected $valordebito;
     protected $tipoidentificacao;
@@ -281,6 +283,38 @@ abstract class AbstractRemessa
     public function setIdentificacao($identificacao): void
     {
         $this->identificacao = $identificacao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdentificacaocliente()
+    {
+        return $this->identificacaocliente;
+    }
+
+    /**
+     * @param mixed $identificacaocliente
+     */
+    public function setIdentificacaocliente($identificacaocliente): void
+    {
+        $this->identificacaocliente = $identificacaocliente;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdentificacaobancaria()
+    {
+        return $this->identificacaobancaria;
+    }
+
+    /**
+     * @param mixed $identificacaobancaria
+     */
+    public function setIdentificacaobancaria($identificacaobancaria): void
+    {
+        $this->identificacaobancaria = $identificacaobancaria;
     }
 
 
