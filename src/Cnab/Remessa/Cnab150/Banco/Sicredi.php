@@ -91,7 +91,7 @@ class Sicredi extends AbstractRemessa implements Remessa
         $this->iniciaTrailer();
         $this->add(1, 1, 'Z');
         $this->add(2, 7, Util::formatCnab('9', $this->getCount(), 6));
-        $this->add(8,24, Util::formatCnab('9', $this->getTotal(), 17));
+        $this->add(8,24, Util::formatCnab('9', $this->getTotal(), 17, 2));
         $this->add(25, 150, '');
         return $this;
     }
