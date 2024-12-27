@@ -3,6 +3,7 @@ namespace Josea\LaravelDebitoEmConta\Cnab\Remessa;
 use Josea\LaravelDebitoEmConta\Util;
 use Illuminate\Support\Str;
 use Josea\LaravelDebitoEmConta\Exception\ValidationException;
+use Carbon\Carbon;
 abstract class AbstractRemessa
 {
     const HEADER = 'header';
