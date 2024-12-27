@@ -31,13 +31,14 @@ abstract class AbstractDebito implements Debito
         'datavencimento',
         'valordebito',
         'identificacao',
+        'movimento'
     ];
 
     protected $protectedFields = [
         'registro',
         'moeda',
         'tipoidentificacao',
-        'movimento'
+
     ];
 
     protected $identificacaocliente;
