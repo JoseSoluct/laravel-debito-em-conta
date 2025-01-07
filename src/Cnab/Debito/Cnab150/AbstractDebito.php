@@ -90,7 +90,7 @@ abstract class AbstractDebito implements Debito
      */
     public function getIdentificacaobanco()
     {
-        return str_pad($this->identificacaobanco, 15, '0', STR_PAD_LEFT);
+        return $this->identificacaobanco;
     }
 
     /**
