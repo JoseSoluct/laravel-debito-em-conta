@@ -86,7 +86,7 @@ abstract class AbstractRemessa extends BaseRemessa
      */
     protected function getCount()
     {
-        return $this->getCountDetalhes() + 4;
+        return $this->getCountDetalhes() + 2;
     }
     /**
      * Função que soma o valor total a ser debitado
