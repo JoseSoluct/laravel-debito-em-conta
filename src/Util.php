@@ -200,6 +200,29 @@ final class Util
     }
 
     /**
+     * Retorna somente os digitos da string
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public static function onlyNumbers($string): string
+    {
+        return self::numbersOnly($string);
+    }
+    /**
+     * Retorna somente os digitos da string
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    public static function numbersOnly($string): string
+    {
+        return preg_replace('/[^[:digit:]]/', '', $string);
+    }
+
+    /**
      * Retorna a String em MAIUSCULO
      *
      * @param string $string
