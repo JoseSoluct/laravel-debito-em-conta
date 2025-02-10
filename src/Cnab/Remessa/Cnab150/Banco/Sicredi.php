@@ -67,7 +67,7 @@ class Sicredi extends AbstractRemessa implements Remessa
         $this->add(1,1,'E');
         $this->add(2,26, Util::formatCnab('X', $debito->getIdentificacaocliente(), 25));
         $this->add(27,30, Util::formatCnab('X', $debito->getAgencia(), 4));
-        $this->add(31,44, Util::formatCnab('X', $debito->getIdentificacaobanco(), 14));
+        $this->add(31,44, Util::formatCnab('9', $debito->getIdentificacaobanco(), 6, 0, '0'));
         $this->add(45,52, $debito->getDatavencimento());
         $this->add(53,67, Util::formatCnab('9', $debito->getValordebito(), 15, 2));
         $this->add(68,69, Util::formatCnab('X', '01', 2));
