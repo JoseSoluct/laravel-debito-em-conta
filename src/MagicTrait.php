@@ -68,7 +68,7 @@ trait MagicTrait
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray(): array
     {
         $vars = array_keys(get_class_vars(self::class));
         $aRet = [];

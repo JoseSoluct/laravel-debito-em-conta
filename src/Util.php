@@ -1,6 +1,7 @@
 <?php
 namespace Josea\LaravelDebitoEmConta;
 use Illuminate\Support\Str;
+use Josea\LaravelDebitoEmConta\Contracts\Debito\Debito;
 use Josea\LaravelDebitoEmConta\Exception\ValidationException;
 
 /**
@@ -305,5 +306,123 @@ final class Util
         ];
 
         return preg_replace('/[^0-9a-zA-Z !+=*\-,.;:%@_]/', '', strtr($string, $normalizeChars));
+    }
+
+    public static function file2array( $file ): array|false
+    {
+        if ( is_array( $file ) and isset( $file[0] ) and is_string( $file[0] ) ) {
+            return $file;
+        }
+
+        if ( is_string( $file ) and is_file( $file ) and file_exists( $file ) ) {
+            return file( $file );
+        }
+
+        if ( is_string( $file ) and str_contains( $file, PHP_EOL ) ) {
+            $fileContent = explode( PHP_EOL, $file );
+
+            if ( empty( end( $fileContent ) ) ) {
+                array_pop( $fileContent );
+            }
+            reset( $fileContent );
+
+            return $fileContent;
+        }
+
+        return false;
+    }
+    public static function isCnab150( $content ): bool
+    {
+        $content = is_array( $content ) ? $content[0] : $content;
+
+        return mb_strlen( rtrim( $content, "\r\n" ) ) == 150;
+    }
+
+    /**
+     * Valida se o header é de um arquivo retorno valido, 240 ou 400 posicoes
+     *
+     * @param $header
+     *
+     * @return bool
+     */
+    public static function isHeaderRetorno($header)
+    {
+        if (! self::isCnab150($header)) {
+            return false;
+        }
+        if (self::isCnab150($header) && mb_substr($header, 1, 1) != '2') {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * @param $banco
+     *
+     * @return string
+     * @throws ValidationException
+     */
+    public static function getBancoClass($banco)
+    {
+        $aBancos = [
+            Debito::COD_BANCO_SICREDI   => 'Banco\\Sicredi',
+        ];
+        if (array_key_exists($banco, $aBancos)) {
+            return $aBancos[$banco];
+        }
+
+        throw new ValidationException("Banco: $banco, inválido");
+    }
+
+    /**
+     * Remove trecho do array.
+     *
+     * @param $i
+     * @param $f
+     * @param $array
+     *
+     * @return string
+     * @throws ValidationException
+     */
+    public static function remove($ini, $fim, &$array)
+    {
+        if (is_string($array)) {
+            $array = preg_split('//u', rtrim($array, chr(10) . chr(13) . "\n" . "\r"), -1, PREG_SPLIT_NO_EMPTY);
+        }
+
+        $ini--;
+
+        if ($ini > 398 || $fim > 400) {
+            throw new ValidationException("{$ini} ou {$fim} ultrapassam o limite máximo de 400");
+        }
+
+        if ($fim < $ini) {
+            throw new ValidationException("{$ini} é maior que o {$fim}");
+        }
+
+        $t = $fim - $ini;
+
+        $toSplice = $array;
+
+        if ($toSplice != null) {
+            return trim(implode('', array_splice($toSplice, $ini, $t)));
+        } else {
+            return null;
+        }
+    }
+
+
+    /**
+     * @return string
+     */
+    public static function appendStrings()
+    {
+        $strings = func_get_args();
+        $appended = null;
+        foreach ($strings as $string) {
+            $appended .= " $string";
+        }
+
+        return trim($appended);
     }
 }

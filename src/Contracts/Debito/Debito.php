@@ -4,6 +4,7 @@ namespace Josea\LaravelDebitoEmConta\Contracts\Debito;
 
 interface Debito
 {
+    const COD_BANCO_SICREDI = '748';
     public function getIdentificacaocliente();
 
     public function getAgencia();
