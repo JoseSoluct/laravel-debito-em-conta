@@ -124,7 +124,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab150
         if ($d->hasOcorrencia('00', '31')) {
             $this->totais['liquidados']++;
             $d->setOcorrenciaTipo($d::DEBIT_SUCCESS);
-        } elseif ($d->hasOcorrencia('01', '04', '05', '10', '12', '13', '14', '15', '18', '19', '20', '30', '20')) {
+        } elseif ($d->hasOcorrencia('01', '02', '04', '05', '10', '12', '13', '14', '15', '18', '19', '20', '30', '20')) {
             $this->totais['erros']++;
             $error = Util::appendStrings(Arr::get($this->rejeicoes, $msgAdicional[0], ''), Arr::get($this->rejeicoes, $msgAdicional[1], ''), Arr::get($this->rejeicoes, $msgAdicional[2], ''), Arr::get($this->rejeicoes, $msgAdicional[3], ''), Arr::get($this->rejeicoes, $msgAdicional[4], ''));
             $d->setError($error);
