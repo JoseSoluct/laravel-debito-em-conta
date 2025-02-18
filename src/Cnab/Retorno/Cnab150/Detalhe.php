@@ -104,7 +104,7 @@ class Detalhe implements DetalheContract
 
     public function setDataVencimento(string $dataVencimento)
     {
-        $this->dataVencimento = date("d/m/Y", strtotime($dataVencimento));
+        $this->dataVencimento = $dataVencimento;
         return $this;
     }
 
