@@ -23,6 +23,8 @@ interface Detalhe
     public const CANCELLATION_TIME_EXPIRED = '98';
     public const CANCELLATION_CONFIRMED = '99';
 
+    public const OCORRENCIA_ERRO = "9";
+
     public function getCodigoRegistro();
     public function getIdentificacaoConveniada();
     public function getAgencia();

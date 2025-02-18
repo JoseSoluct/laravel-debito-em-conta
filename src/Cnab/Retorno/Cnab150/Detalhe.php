@@ -52,6 +52,7 @@ class Detalhe implements DetalheContract
      */
     protected $codigoMovimento;
 
+
     public function getCodigoRegistro(): string
     {
         return $this->codigoRegistro;
@@ -103,7 +104,7 @@ class Detalhe implements DetalheContract
 
     public function setDataVencimento(string $dataVencimento)
     {
-        $this->dataVencimento = $dataVencimento;
+        $this->dataVencimento = date("d/m/Y", strtotime($dataVencimento));
         return $this;
     }
 
@@ -114,7 +115,7 @@ class Detalhe implements DetalheContract
 
     public function setValor(string $valor)
     {
-        $this->valor = $valor;
+        $this->valor = floatval($valor) / 100;
         return $this;
     }
 

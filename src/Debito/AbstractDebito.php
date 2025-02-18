@@ -10,7 +10,7 @@ abstract class AbstractDebito implements Debito
     const REAL = '03';
 
     /**
-     * Campos necessários para o boleto
+     * Campos necessários para o débito em conta
      *
      * @var array
      */
@@ -150,4 +150,30 @@ abstract class AbstractDebito implements Debito
     {
         return $this->valordebito;
     }
+
+    /**
+     * Retorna a mensagem que deve ser enviada e retornada no registro F
+     *
+     * @return string
+     */
+    public function getMensagem()
+    {
+        return $this->mensagem;
+    }
+
+    /**
+     * Define a valor do débito
+     *
+     * @param string $mensagem
+     *
+     * @return $this
+     */
+    public function setMensagem($mensagem)
+    {
+        $this->mensagem = $mensagem;
+
+        return $this;
+    }
+
+
 }

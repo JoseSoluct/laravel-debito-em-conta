@@ -23,6 +23,7 @@ class RetornoCnab150Test extends TestCase
             $this->assertInstanceOf(Detalhe::class, $retorno->getDetalhe(1));
             foreach ($retorno->getDetalhes() as $detalhe) {
                 $this->assertInstanceOf(Detalhe::class, $detalhe);
+                dd($detalhe);
                 $this->assertArrayHasKey('valor', $detalhe->toArray());
             }
         }else{

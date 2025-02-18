@@ -14,6 +14,7 @@ interface Debito
     public function getDatavencimento();
 
     public function getValordebito();
+    public function getUsoempresa();
 
     public function getIdentificacao();
 

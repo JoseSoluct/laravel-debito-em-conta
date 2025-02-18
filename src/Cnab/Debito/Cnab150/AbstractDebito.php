@@ -52,6 +52,7 @@ abstract class AbstractDebito implements Debito
     protected $moeda;
     protected $tipoidentificacao;
     protected $movimento;
+    protected $usoempresa;
 
     /**
      * @return mixed
@@ -236,6 +237,26 @@ abstract class AbstractDebito implements Debito
     {
         $this->conta = $conta;
     }
+
+    /**
+     * @return string
+     */
+    public function getUsoempresa()
+    {
+        return $this->usoempresa;
+    }
+
+    /**
+     * @param string $usoempresa
+     * @return $this
+     */
+    public function setUsoempresa($usoempresa)
+    {
+        $this->usoempresa = $usoempresa;
+        return $this;
+    }
+
+
 
 
 

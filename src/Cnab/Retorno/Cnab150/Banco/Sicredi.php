@@ -111,7 +111,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab150
             ->setValor($this->rem(53, 67, $detalhe))
             ->setCodigoRetorno($this->rem(68, 69, $detalhe))
             ->setUsoEmpresa($this->rem(70, 129, $detalhe))
-            ->setIdentificacao($this->rem(131, 143, $detalhe))
+            ->setIdentificacao($this->rem(131,  145, $detalhe))
             ->setOcorrencia($this->rem(68, 69, $detalhe))
             ->setCodigoMovimento($this->rem(150, 150, $detalhe))
             ->setOcorrenciaDescricao(Arr::get($this->ocorrencias, $this->detalheAtual()->getOcorrencia(), 'Desconhecido'));
