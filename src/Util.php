@@ -1,5 +1,6 @@
 <?php
 namespace Josea\LaravelDebitoEmConta;
+use Storage;
 use Illuminate\Support\Str;
 use Josea\LaravelDebitoEmConta\Contracts\Debito\Debito;
 use Josea\LaravelDebitoEmConta\Exception\ValidationException;
