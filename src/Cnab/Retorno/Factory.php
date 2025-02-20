@@ -16,7 +16,7 @@ class Factory
     public static function make($file)
     {
         if (! $file_content = Util::file2array($file)) {
-            throw new ValidationException('Arquivo: não existe');
+            throw new ValidationException("Arquivo: {$file} não existe" );
         }
 
         if (! Util::isHeaderRetorno($file_content[0])) {
