@@ -317,6 +317,10 @@ final class Util
         if ( is_string( $file ) and is_file( $file ) and file_exists( $file ) ) {
             return file( $file );
         }
+        if (is_string($file) and Storage::fileExists($file) and Storage::exists($file)) {
+            $lines = preg_split('/\r\n|\r|\n/', Storage::get($file));
+            return $lines;
+        }
 
         if ( is_string( $file ) and str_contains( $file, PHP_EOL ) ) {
             $fileContent = explode( PHP_EOL, $file );
