@@ -63,7 +63,7 @@ class Sicredi extends AbstractRemessa implements Remessa
             $this->add(130, 130, $debito->getTipoidentificacao());
             $this->add(131, 145, Util::formatCnab('9', $debito->getIdentificacao(), 15));
             $this->add(130, 145, '');
-            $this->add(119, 149, '');
+            $this->add(146, 149, '');
         }
         $this->add(150, 150, $debito->getMovimento());
 
